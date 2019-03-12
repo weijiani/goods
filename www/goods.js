@@ -25,9 +25,7 @@ var app=new Vue({
 	el:"#app",
 	data:{
 		list:[
-		{id:1,name:'书包',time:new Date(),},
-		{id:2,name:'森马外套',time:new Date(),},
-		{id:3,name:'vivo手机',time:new Date(),},
+		
 		
 		],
 		id:'',
@@ -52,6 +50,11 @@ var app=new Vue({
 			     return `${y}-${m}-${d} ${h}:${mm}:${s}`;
 			
 		}
+	},
+	created:function(){
+		this.$http.get('http://localhost:8081/goosList.json').then(function(result){
+				this.list=result.body.data;
+			});
 	},
 	methods:{
 		add(){
