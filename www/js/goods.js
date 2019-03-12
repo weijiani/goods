@@ -52,8 +52,9 @@ var app=new Vue({
 		}
 	},
 	created:function(){
-		this.$http.get('http://localhost:8081/goosList.json').then(function(result){
+		this.$http.get('http://localhost:8081/file/goosList.json').then(function(result){
 				this.list=result.body.data;
+				
 			});
 	},
 	methods:{

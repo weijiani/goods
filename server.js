@@ -22,12 +22,22 @@ var server=http.createServer(function(req,res){
 	});
 	req.on('end',function(){
 		 POST=querystring.parse(str);
+		  var fileName='./www'+url;
 		
-		 if(url=='/user'){
-	 	
+		 if(url=='/file/goosList.json'){
+	 	   
+	     fs.readFile(fileName,function(err,data){
+		 if(err){
+		 	res.write('404');
+		 }else{
+		 	res.write(data);
+		 	
+		 }
+		 res.end();
+	});
 	 	  
 	 }else{
-	 	 var fileName='./www'+url;
+	 	
 	     fs.readFile(fileName,function(err,data){
 		 if(err){
 		 	res.write('404');
