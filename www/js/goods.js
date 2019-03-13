@@ -28,7 +28,7 @@ var app=new Vue({
 		
 		
 		],
-		id:'',
+		
 		name:'',
 		keywords:'',
 	},
@@ -52,22 +52,27 @@ var app=new Vue({
 		}
 	},
 	created:function(){
-		this.$http.get('http://localhost:8081/file/goosList.json').then(function(result){
+		this.getList();
+	},
+	methods:{
+		getList(){
+			this.$http.get('http://localhost:8081/file/goosList.json').then(function(result){
+			    console.log(result.body);
 				this.list=result.body.data;
 				
 			});
-	},
-	methods:{
-		add(){
-			if(this.id!=''&&this.name!=''){
-				var flower={id:this.id,name:this.name,time:new Date(),};
-			    this.list.push(flower);
-			    this.id='';
-			    this.name='';
+		},
+		
+		addTwo(){
+			if(this.name!=''){
+			this.$http.post('http://localhost:8081/add',{name:this.name},{emulateJSON:true}).then(function(result){
+				
+				this.getList();
+				 this.name='';
+			});
 			}else{
 				alert("请您填写完整的数据哟~");
 			}
-			
 		},
 		
 		del(id){

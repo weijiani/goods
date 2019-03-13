@@ -18,15 +18,12 @@
 					<h3 class="panel-title">商品管理</h3>
 				</div>
 				<div class="panel-body form-inline" >
-					<label>
-						
-						ID:<input type="text" class="form-control" v-model='id'/>
-					</label>
+					
 					<label>
 						名称:
 						<input type="text" class="form-control" v-model='name' @keyup.enter="add" />
 					</label>
-					<input type="button"  id="" value="添加" class="btn btn-primary" @click="add"/>
+					<input type="button"  id="" value="添加" class="btn btn-primary" @click="addTwo"/>
 					<label>
 						搜索关键字:
 						<input type="text" class="form-control" v-model="keywords" v-focus />
